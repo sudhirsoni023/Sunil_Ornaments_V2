@@ -10,7 +10,7 @@ import com.ornaments.sunil.entities.*;
 
 public interface BillRepository extends JpaRepository<Bill, Integer> {
 	@Query("select b from Bill b where b.invoice_no =:i")
-	public Bill findByinvoice_no(@Param("i") String invoice);
+	public Bill findByinvoice_no(@Param("i") long invoice);
 
 	public List<Bill> findByNameContaining(String query);
 

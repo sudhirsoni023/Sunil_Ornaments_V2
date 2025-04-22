@@ -23,7 +23,7 @@ public class BillServiceImpl implements BillService {
         this.billRepository = billRepository;
     }
 
-    public BillDto findByinvoice_no(String invoice) {
+    public BillDto findByinvoice_no(long invoice) {
         Bill bill = this.billRepository.findByinvoice_no(invoice);
         return mapper.BillEntityToDtoMapping(bill);
     }
@@ -33,29 +33,56 @@ public class BillServiceImpl implements BillService {
         return bill.stream().map(b -> mapper.BillEntityToDtoMapping(b)).collect(Collectors.toList());
     }
 
-    public List<BillDto> findAll() {
+    public List<BillDto> getAllBills() {
         List<Bill> bill = this.billRepository.findAll();
         return bill.stream().map(b -> mapper.BillEntityToDtoMapping(b)).collect(Collectors.toList());
     }
 
-    public boolean delete(int slNo) {
-        Optional<Bill> optionalBill = billRepository.findById(slNo);
+    public boolean deleteBill(int invoice_no) {
+        Optional<Bill> optionalBill = billRepository.findById(invoice_no);
         if (optionalBill.isPresent()) {
-            billRepository.deleteById(slNo);
+            billRepository.deleteById((int) invoice_no);
             return true;
         }
         return false;
     }
 
-    public boolean deleteAll() {
+    public boolean deleteAllBills() {
         this.billRepository.deleteAll();
         return true;
     }
 
-    public BillDto save(BillDto billDTO) {
+    public BillDto createBill(BillDto billDTO) {
         Bill bill = mapper.BillDtoToEntityMapping(billDTO);
         Bill savedBill = billRepository.save(bill);
         return mapper.BillEntityToDtoMapping(savedBill);
+    }
+
+    // Update bill
+    public BillDto updateBill(int invoice_no, BillDto billDTO) {
+        Optional<Bill> optionalBill = billRepository.findById(invoice_no);
+        if (optionalBill.isPresent()) {
+            Bill bill = optionalBill.get();
+            // Update values
+            bill.setName(billDTO.getName());
+            bill.setGstin_no(billDTO.getGstinNo());
+            bill.setParticulars(billDTO.getParticulars());
+            bill.setWeight(billDTO.getWeight());
+            bill.setRate(billDTO.getRate());
+            bill.setAmount(billDTO.getAmount());
+            bill.setInvoice_no(billDTO.getInvoiceNo());
+            bill.setDate(billDTO.getDate());
+            bill.setAadhar_no(billDTO.getAadharNo());
+            bill.setPan_no(billDTO.getPanNo());
+            bill.setNet_total(billDTO.getNetTotal());
+            bill.setCgst(billDTO.getCgst());
+            bill.setSgst(billDTO.getSgst());
+            bill.setTotal_invoice_value_inwords(billDTO.getTotalInvoiceValueInWords());
+
+            Bill updatedBill = billRepository.save(bill);
+            return mapper.BillEntityToDtoMapping(updatedBill);
+        }
+        return null;
     }
 
 }

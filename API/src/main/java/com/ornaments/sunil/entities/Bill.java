@@ -21,7 +21,7 @@ public class Bill {
 	private String rate;
 	private String amount;
 	@Column(unique = true)
-	private String invoice_no;
+	private int invoice_no;
 	private String date;
 	private String aadhar_no;
 	private String pan_no;
@@ -35,7 +35,7 @@ public class Bill {
 	}
 
 	public Bill(int sl_no, String name, String gstin_no, String particulars, String weight, String rate, String amount,
-			String invoice_no, String date, String aadhar_no, String pan_no, String net_total, String cgst, String sgst,
+			int invoice_no, String date, String aadhar_no, String pan_no, String net_total, String cgst, String sgst,
 			String total_invoice_value_inwords) {
 		this.sl_no = sl_no;
 		this.name = name;
@@ -119,11 +119,11 @@ public class Bill {
 		this.amount = amount;
 	}
 
-	public String getInvoice_no() {
+	public int getInvoice_no() {
 		return invoice_no;
 	}
 
-	public void setInvoice_no(String invoice_no) {
+	public void setInvoice_no(int invoice_no) {
 		this.invoice_no = invoice_no;
 	}
 

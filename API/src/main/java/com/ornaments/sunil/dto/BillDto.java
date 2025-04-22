@@ -9,7 +9,7 @@ public class BillDto {
     private String weight;
     private String rate;
     private String amount;
-    private String invoiceNo;
+    private int invoiceNo;
     private String date;
     private String aadharNo;
     private String panNo;
@@ -19,7 +19,7 @@ public class BillDto {
     private String totalInvoiceValueInWords;
 
     public BillDto(int slNo, String name, String gstinNo, String particulars, String weight, String rate, String amount,
-            String invoiceNo, String date, String aadharNo, String panNo, String netTotal, String cgst, String sgst,
+            int invoiceNo, String date, String aadharNo, String panNo, String netTotal, String cgst, String sgst,
             String totalInvoiceValueInWords) {
         this.slNo = slNo;
         this.name = name;
@@ -97,11 +97,11 @@ public class BillDto {
         this.amount = amount;
     }
 
-    public String getInvoiceNo() {
+    public int getInvoiceNo() {
         return invoiceNo;
     }
 
-    public void setInvoiceNo(String invoiceNo) {
+    public void setInvoiceNo(int invoiceNo) {
         this.invoiceNo = invoiceNo;
     }
 
