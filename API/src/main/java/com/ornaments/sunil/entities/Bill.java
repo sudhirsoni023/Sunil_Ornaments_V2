@@ -34,6 +34,26 @@ public class Bill {
 		super();
 	}
 
+	public Bill(int sl_no, String name, String gstin_no, String particulars, String weight, String rate, String amount,
+			String invoice_no, String date, String aadhar_no, String pan_no, String net_total, String cgst, String sgst,
+			String total_invoice_value_inwords) {
+		this.sl_no = sl_no;
+		this.name = name;
+		this.gstin_no = gstin_no;
+		this.particulars = particulars;
+		this.weight = weight;
+		this.rate = rate;
+		this.amount = amount;
+		this.invoice_no = invoice_no;
+		this.date = date;
+		this.aadhar_no = aadhar_no;
+		this.pan_no = pan_no;
+		this.net_total = net_total;
+		this.cgst = cgst;
+		this.sgst = sgst;
+		this.total_invoice_value_inwords = total_invoice_value_inwords;
+	}
+
 	@Override
 	public String toString() {
 		return "Bill [sl_no=" + sl_no + ", name=" + name + ", gstin_no=" + gstin_no + ", particulars=" + particulars

@@ -2,19 +2,19 @@ package com.ornaments.sunil.services.interfaces;
 
 import java.util.List;
 
-import com.ornaments.sunil.entities.Bill;
+import com.ornaments.sunil.dto.BillDto;
 
 public interface BillService {
-    public Bill findByinvoice_no(String invoice);
+    public BillDto findByinvoice_no(String invoice);
 
-    public List<Bill> findByNameContaining(String query);
+    public List<BillDto> findByNameContaining(String query);
 
-    public List<Bill> findAll();
+    public List<BillDto> findAll();
 
-    public void delete(Bill b);
+    public boolean delete(int slNo);
 
-    public void deleteAll();
+    public boolean deleteAll();
 
-    public void save(Bill b);
+    public BillDto save(BillDto billDto);
 
 }
