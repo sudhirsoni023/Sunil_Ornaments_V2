@@ -36,9 +36,9 @@ public class HomeController {
 	}
 
 	// Get a bill by Invoice Id
-	@GetMapping("/{id}")
-	public ResponseEntity<BillDto> getBillById(@PathVariable long id) {
-		BillDto bill = billService.findByinvoice_no(id);
+	@GetMapping("/{invoice_id}")
+	public ResponseEntity<BillDto> getBillById(@PathVariable int invoice_id) {
+		BillDto bill = billService.findByinvoice_no(invoice_id);
 		if (bill != null) {
 			return ResponseEntity.ok(bill);
 		} else {
@@ -54,9 +54,9 @@ public class HomeController {
 	}
 
 	// Update a bill
-	@PutMapping("/{id}")
-	public ResponseEntity<BillDto> updateBill(@PathVariable int id, @RequestBody BillDto billDto) {
-		BillDto updatedBill = billService.updateBill(id, billDto);
+	@PutMapping("/{invoice_id}")
+	public ResponseEntity<BillDto> updateBill(@PathVariable int invoice_id, @RequestBody BillDto billDto) {
+		BillDto updatedBill = billService.updateBill(invoice_id, billDto);
 		if (updatedBill != null) {
 			return ResponseEntity.ok(updatedBill);
 		} else {
@@ -65,24 +65,17 @@ public class HomeController {
 	}
 
 	// Delete a bill
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteBill(@PathVariable int id) {
-		boolean deleted = billService.deleteBill(id);
-		if (deleted) {
-			return ResponseEntity.noContent().build();
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	@DeleteMapping("/{invoice_id}")
+	public ResponseEntity<Void> deleteBill(@PathVariable int invoice_id) {
+		this.billService.deleteBill(invoice_id);
+		return ResponseEntity.noContent().build();
+
 	}
 
 	// Delete all bills
 	@DeleteMapping
 	public ResponseEntity<Void> deleteAllBills() {
-		boolean deleted = this.billService.deleteAllBills();
-		if (deleted) {
-			return ResponseEntity.noContent().build();
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+		this.billService.deleteAllBills();
+		return ResponseEntity.noContent().build();
 	}
 }
