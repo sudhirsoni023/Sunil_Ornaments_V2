@@ -5,13 +5,13 @@ import java.util.List;
 import com.ornaments.sunil.dto.BillDto;
 
 public interface BillService {
-    public BillDto findByinvoice_no(int invoice);
+    public BillDto getBillByInvoiceNo(int invoice);
 
-    public List<BillDto> findByNameContaining(String query);
+    public List<BillDto> getBillByName(String name);
 
     public List<BillDto> getAllBills();
 
-    public void deleteBill(int invoice_no);
+    public void deleteBillByInvoiceNo(int invoice_no);
 
     public void deleteAllBills();
 

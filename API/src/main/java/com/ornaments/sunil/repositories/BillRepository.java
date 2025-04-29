@@ -11,12 +11,12 @@ import com.ornaments.sunil.entities.*;
 
 public interface BillRepository extends JpaRepository<Bill, Integer> {
 	@Query("select b from Bill b where b.invoice_no =:i")
-	public Bill findByinvoice_no(@Param("i") int invoice);
+	public Bill getBillByInvoiceNo(@Param("i") int invoice_no);
 
-	public List<Bill> findByNameContaining(String query);
+	public List<Bill> getBillByNameContaining(String name);
 
 	@Modifying
 	@Query("DELETE FROM Bill b WHERE b.invoice_no = :id")
-	public void deleteByinvoice_no(@Param("id") int invoice);
+	public void deleteBillByInvoiceNo(@Param("id") int invoice);
 
 }

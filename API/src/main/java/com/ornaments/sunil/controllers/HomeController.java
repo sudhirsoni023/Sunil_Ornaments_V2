@@ -36,9 +36,9 @@ public class HomeController {
 	}
 
 	// Get a bill by Invoice Id
-	@GetMapping("/{invoice_id}")
-	public ResponseEntity<BillDto> getBillById(@PathVariable int invoice_id) {
-		BillDto bill = billService.findByinvoice_no(invoice_id);
+	@GetMapping("/{invoice_no}")
+	public ResponseEntity<BillDto> getBillByInvoiceNo(@PathVariable int invoice_no) {
+		BillDto bill = billService.getBillByInvoiceNo(invoice_no);
 		if (bill != null) {
 			return ResponseEntity.ok(bill);
 		} else {
@@ -46,17 +46,30 @@ public class HomeController {
 		}
 	}
 
+	// Get bills by Name
+	@GetMapping("/byName/{name}")
+	public ResponseEntity<List<BillDto>> getBillByName(@PathVariable String name) {
+		List<BillDto> bill = billService.getBillByName(name);
+		if (!bill.isEmpty())
+			return ResponseEntity.ok(bill);
+		else
+			return ResponseEntity.notFound().build();
+	}
+
 	// Create a new bill
 	@PostMapping
 	public ResponseEntity<BillDto> createBill(@RequestBody BillDto billDto) {
 		BillDto createdBill = billService.createBill(billDto);
-		return ResponseEntity.ok(createdBill);
+		if (createdBill != null)
+			return ResponseEntity.ok(createdBill);
+		else
+			return ResponseEntity.internalServerError().build();
 	}
 
 	// Update a bill
-	@PutMapping("/{invoice_id}")
-	public ResponseEntity<BillDto> updateBill(@PathVariable int invoice_id, @RequestBody BillDto billDto) {
-		BillDto updatedBill = billService.updateBill(invoice_id, billDto);
+	@PutMapping("/{invoice_no}")
+	public ResponseEntity<BillDto> updateBill(@PathVariable int invoice_no, @RequestBody BillDto billDto) {
+		BillDto updatedBill = billService.updateBill(invoice_no, billDto);
 		if (updatedBill != null) {
 			return ResponseEntity.ok(updatedBill);
 		} else {
@@ -65,9 +78,9 @@ public class HomeController {
 	}
 
 	// Delete a bill
-	@DeleteMapping("/{invoice_id}")
-	public ResponseEntity<Void> deleteBill(@PathVariable int invoice_id) {
-		this.billService.deleteBill(invoice_id);
+	@DeleteMapping("/{invoice_no}")
+	public ResponseEntity<Void> deleteBillByInvoiceNo(@PathVariable int invoice_no) {
+		this.billService.deleteBillByInvoiceNo(invoice_no);
 		return ResponseEntity.noContent().build();
 
 	}
