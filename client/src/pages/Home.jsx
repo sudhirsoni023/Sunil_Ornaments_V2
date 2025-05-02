@@ -8,62 +8,64 @@ import BG6 from "../assets/images/BG-6.jpg";
 import NavBar from "../components/NavBar";
 const Home = () => {
   return (
-    <section>
+    <>
       <NavBar />
-      {/* <!-- Bootstrap Carousel/Slider Starts here --> */}
-      <div
-        id="carouselExampleFade"
-        className="carousel slide carousel-fade"
-        data-bs-ride="carousel"
-      >
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src={BG1} className="d-block w-100" alt="BG-1" />
+      <section>
+        {/* <!-- Bootstrap Carousel/Slider Starts here --> */}
+        <div
+          id="carouselExampleFade"
+          className="carousel slide carousel-fade"
+          data-bs-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img src={BG1} className="d-block w-100" alt="BG-1" />
+            </div>
+            <div className="carousel-item">
+              <img src={BG2} className="d-block w-100" alt="BG-2" />
+            </div>
+            <div className="carousel-item">
+              <img src={BG3} className="d-block w-100" alt="BG-3" />
+            </div>
+            <div className="carousel-item">
+              <img src={BG4} className="d-block w-100" alt="BG-4" />
+            </div>
+            <div className="carousel-item">
+              <img src={BG5} className="d-block w-100" alt="BG-5" />
+            </div>
+            <div className="carousel-item">
+              <img src={BG6} className="d-block w-100" alt="BG-6" />
+            </div>
           </div>
-          <div className="carousel-item">
-            <img src={BG2} className="d-block w-100" alt="BG-2" />
-          </div>
-          <div className="carousel-item">
-            <img src={BG3} className="d-block w-100" alt="BG-3" />
-          </div>
-          <div className="carousel-item">
-            <img src={BG4} className="d-block w-100" alt="BG-4" />
-          </div>
-          <div className="carousel-item">
-            <img src={BG5} className="d-block w-100" alt="BG-5" />
-          </div>
-          <div className="carousel-item">
-            <img src={BG6} className="d-block w-100" alt="BG-6" />
-          </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleFade"
+            data-bs-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleFade"
+            data-bs-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button>
         </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleFade"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleFade"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
 
-      {/* <!-- Bootstrap Carousel/Slider Ends here --> */}
-    </section>
+        {/* <!-- Bootstrap Carousel/Slider Ends here --> */}
+      </section>
+    </>
   );
 };
 
