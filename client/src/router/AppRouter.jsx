@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
+import App from "../App";
 import Bill from "../pages/Bill";
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<App />} />
       <Route path="/bill" element={<Bill />} />
       {/* <Route path="/view-bills" element={<ViewBill />} /> */}
       {/* <Route path="/add-new-bill" element={<AddBill />} /> */}

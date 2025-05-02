@@ -5,7 +5,7 @@ const SideBar = () => {
     <div>
       {/* <!-- Sidebar --> */}
       <div className="sidebar mt-4 bg-dark">
-        <span onclick="toggleSidebar()" className="crossBtn">
+        <span onClick="toggleSidebar()" className="crossBtn">
           &times;
         </span>
         <Link to="/bill" className="item">
