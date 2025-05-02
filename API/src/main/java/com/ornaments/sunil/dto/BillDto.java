@@ -1,15 +1,22 @@
 package com.ornaments.sunil.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class BillDto {
 
     private int slNo;
+    @NotBlank(message = "Name is required")
     private String name;
     private String gstinNo;
+    @NotBlank(message = "Particulars is required")
     private String particulars;
+    @NotBlank(message = "Weight is required")
     private String weight;
+    @NotBlank(message = "Rate is required")
     private String rate;
     private String amount;
     private int invoiceNo;
+    @NotBlank(message = "date is required")
     private String date;
     private String aadharNo;
     private String panNo;

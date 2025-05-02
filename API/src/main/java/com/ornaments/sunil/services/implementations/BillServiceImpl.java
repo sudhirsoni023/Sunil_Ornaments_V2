@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ornaments.sunil.dto.BillDto;
 import com.ornaments.sunil.entities.Bill;
+import com.ornaments.sunil.exceptions.BillNotFoundException;
 import com.ornaments.sunil.mappings.Mapper;
 import com.ornaments.sunil.repositories.BillRepository;
 import com.ornaments.sunil.services.interfaces.BillService;
@@ -30,15 +31,15 @@ public class BillServiceImpl implements BillService {
         if (bill != null)
             return mapper.BillEntityToDtoMapping(bill);
         else
-            return null;
+            throw new BillNotFoundException("Bill with invoice no " + invoice_no + " not found");
     }
 
     public List<BillDto> getBillByName(String name) {
         List<Bill> bill = this.billRepository.getBillByNameContaining(name);
-        if (bill != null)
+        if (!bill.isEmpty())
             return bill.stream().map(b -> mapper.BillEntityToDtoMapping(b)).collect(Collectors.toList());
         else
-            return null;
+            throw new BillNotFoundException("Bill with name " + name + " not found");
     }
 
     public List<BillDto> getAllBills() {
