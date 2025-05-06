@@ -1,5 +1,5 @@
+import "../assets/css/style.css";
 import React from "react";
-import { Link } from "react-router-dom";
 const SideBar = () => {
   return (
     <div>
@@ -8,21 +8,11 @@ const SideBar = () => {
         <span onClick="toggleSidebar()" className="crossBtn">
           &times;
         </span>
-        <Link to="/bill" className="item">
-          <i className="fa-solid fa-house-user"></i> Home
-        </Link>
-        <Link to="/view-bills" className="item">
-          <i className="fa-solid fa-address-card"></i> View Bills
-        </Link>
-        <Link to="/add-new-bill" className="item">
-          <i className="fa-solid fa-address-book"></i> Add New Bill
-        </Link>
-        <Link to="/profile" className="item">
-          <i className="fa-solid fa-user"></i> Your Profile
-        </Link>
-        <Link to="/settings" className="item">
-          <i className="fa-solid fa-gear"></i> Settings
-        </Link>
+        <button onClick={() => renderComponent("Home")}>Home</button>
+        <button onClick={() => renderComponent("ViewBills")}>View Bills</button>
+        <button onClick={() => renderComponent("AddBill")}>Add New Bill</button>
+        <button onClick={() => renderComponent("Profile")}>Your Profile</button>
+        <button onClick={() => renderComponent("Settings")}>Settings</button>
         <div className="divider"></div>
       </div>
       {/* <!-- End of Sidebar  --> */}
