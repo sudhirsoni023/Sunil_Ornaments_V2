@@ -1,8 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
-
-const Content = () => {
+const Settings = () => {
   return (
     <div className="d-flex flex-column vh-100">
       <NavBar />
@@ -13,20 +12,11 @@ const Content = () => {
         </div>
 
         <div className="flex-grow-1 p-4 overflow-auto">
-          <section>
-            <h1>Welcome Sunil Soni Ji</h1>
-          </section>
+          <h2 className="mb-4">Settings </h2>
         </div>
       </div>
     </div>
-
-    // <div className="d-flex flex-column vh-100">
-    //   <Bill />
-    //   {/* // <!-- content area  --> */}
-    //
-    // </div>
-    // // <!-- End of content area  -->
   );
 };
 
-export default Content;
+export default Settings;

@@ -1,18 +1,28 @@
-import "../assets/css/style.css";
 import React from "react";
+import { Link } from "react-router-dom";
 const SideBar = () => {
   return (
     <div>
       {/* <!-- Sidebar --> */}
-      <div className="sidebar mt-4 bg-dark">
-        <span onClick="toggleSidebar()" className="crossBtn">
+      <div className="sidebar mt-1 bg-dark">
+        <span onclick="toggleSidebar()" className="crossBtn">
           &times;
         </span>
-        <button onClick={() => renderComponent("Home")}>Home</button>
-        <button onClick={() => renderComponent("ViewBills")}>View Bills</button>
-        <button onClick={() => renderComponent("AddBill")}>Add New Bill</button>
-        <button onClick={() => renderComponent("Profile")}>Your Profile</button>
-        <button onClick={() => renderComponent("Settings")}>Settings</button>
+        <Link to="/welcome" className="item">
+          Home
+        </Link>
+        <Link to="/view-bills" className="item">
+          View Bills
+        </Link>
+        <Link to="/add-new-bill" className="item">
+          Add New Bill
+        </Link>
+        <Link to="/profile" className="item">
+          Your Profile
+        </Link>
+        <Link to="/settings" className="item">
+          Settings
+        </Link>
         <div className="divider"></div>
       </div>
       {/* <!-- End of Sidebar  --> */}

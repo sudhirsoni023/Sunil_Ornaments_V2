@@ -88,15 +88,7 @@
   font-weight: bold;
 }
 
-.sidebar {
-  width: 18%;
-  z-index: 9999999999999999999999999999;
-  background: white;
-  position: fixed;
-  height: 100%;
-  padding-top: 45px;
-}
-.sidebar button {
+.sidebar a {
   border: none;
   display: block;
   width: 100%;
@@ -104,7 +96,7 @@
   color: gray;
   text-decoration: none;
 }
-.sidebar button:hover {
+.sidebar a:hover {
   background: #e2e2e2;
 }
 .sidebar .divider {

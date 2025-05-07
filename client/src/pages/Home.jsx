@@ -10,8 +10,8 @@ const Home = () => {
   return (
     <>
       <NavBar />
+      {/* <!-- Bootstrap Carousel/Slider Starts here --> */}
       <section>
-        {/* <!-- Bootstrap Carousel/Slider Starts here --> */}
         <div
           id="carouselExampleFade"
           className="carousel slide carousel-fade"
@@ -62,9 +62,8 @@ const Home = () => {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-
-        {/* <!-- Bootstrap Carousel/Slider Ends here --> */}
       </section>
+      {/* <!-- Bootstrap Carousel/Slider Ends here --> */}
     </>
   );
 };
