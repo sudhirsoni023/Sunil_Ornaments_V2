@@ -5,16 +5,16 @@ import NavBar from "./NavBar";
 import SideBar from "./SideBar";
 
 const ViewBill = () => {
-  const [users, setUsers] = useState([]);
+  const [bills, setBills] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBills = async () => {
       try {
-        const response = await getAllBills(); // API call
-        setUsers(response.data);
+        const response = await getAllBills();
+        setBills(response.data);
       } catch (error) {
-        console.error("Error fetching users:", error);
+        console.error("Error fetching bills:", error);
       } finally {
         setLoading(false);
       }
@@ -22,13 +22,11 @@ const ViewBill = () => {
 
     fetchBills();
   }, []);
-  console.log(JSON.stringify(users));
-  // Proper use of if...else before return
   if (loading) {
     return <h3>Loading...</h3>;
   }
 
-  if (!Array.isArray(users) || users.length === 0) {
+  if (!Array.isArray(bills) || bills.length === 0) {
     return (
       <h2 className="text-center bg-danger text-white">
         No Bills Present here, Please start adding bills !!
@@ -86,7 +84,7 @@ const ViewBill = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((b) => (
+                  {bills.map((b) => (
                     <tr key={b.invoice_no}>
                       <th scope="row">{b.invoiceNo}</th>
                       <td>{b.name}</td>
@@ -96,7 +94,8 @@ const ViewBill = () => {
                       <td>
                         <div>
                           <Link
-                            to={`/view_bill/${b.invoice_no}`}
+                            to="/view-bill-details"
+                            state={{ invoiceNo: b.invoiceNo }}
                             className="btn btn-warning btn-sm"
                           >
                             View

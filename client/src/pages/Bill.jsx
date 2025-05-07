@@ -11,11 +11,10 @@ const Bill = () => {
         <div className="bg-dark text-white p-3" style={{ width: "250px" }}>
           <SideBar />
         </div>
-
         <div className="flex-grow-1 p-4 overflow-auto">
-          <h2 className="mb-4">Bill Page</h2>
-          {/* You can place a form, table, or data display component here */}
-          <p>This is where your bill-related content will go.</p>
+          <section>
+            <h1>Welcome Sunil Soni Ji</h1>
+          </section>
         </div>
       </div>
     </div>

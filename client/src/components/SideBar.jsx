@@ -5,10 +5,10 @@ const SideBar = () => {
     <div>
       {/* <!-- Sidebar --> */}
       <div className="sidebar mt-1 bg-dark">
-        <span onclick="toggleSidebar()" className="crossBtn">
+        <span onClick="toggleSidebar()" className="crossBtn">
           &times;
         </span>
-        <Link to="/welcome" className="item">
+        <Link to="/bill" className="item">
           Home
         </Link>
         <Link to="/view-bills" className="item">
