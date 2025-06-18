@@ -5,7 +5,6 @@ body {
   color: navy;
   font-family: sans-serif;
   font-weight: bolder;
-  border: 5px double navy;
 }
 .table {
   font-size: large;
@@ -18,7 +17,6 @@ body {
   color: blue;
 }
 li {
-  background-color: pink !important;
   line-height: 1.5;
   font-size: large;
 }
@@ -30,7 +28,6 @@ li {
   border: hidden;
 }
 ul {
-  border: 2px solid navy !important;
 }
 u {
   border-bottom: 2.5px dotted navy;
