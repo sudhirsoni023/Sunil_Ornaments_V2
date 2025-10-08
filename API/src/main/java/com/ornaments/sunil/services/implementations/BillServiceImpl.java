@@ -3,6 +3,9 @@ package com.ornaments.sunil.services.implementations;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ornaments.sunil.dto.BillDto;
@@ -91,5 +94,11 @@ public class BillServiceImpl implements BillService {
             return mapper.BillEntityToDtoMapping(updatedBill);
         else
             return null;
+    }
+
+    public Page<BillDto> getAllBillsPaged(int pageNumber, int pageSize,String sortBy, String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+        var pages = PageRequest.of(pageNumber, pageSize,sort);
+        return billRepository.findAll(pages).map(b -> mapper.BillEntityToDtoMapping(b));
     }
 }

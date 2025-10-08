@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ornaments.sunil.services.interfaces.*;
 
@@ -36,6 +37,16 @@ public class HomeController {
 	public ResponseEntity<List<BillDto>> getAllBills() {
 		List<BillDto> bills = billService.getAllBills();
 		return ResponseEntity.ok(bills);
+	}
+
+	// Get all bills by pagination and sorting
+	@GetMapping("/page")
+	public ResponseEntity<List<BillDto>> getAllBillsByPages(@RequestParam(defaultValue = "0") int pageNumber,
+			@RequestParam(defaultValue = "10") int pageSize,
+			@RequestParam(defaultValue = "invoice_no") String sortBy,
+			@RequestParam(defaultValue = "asc") String sortDirection) {
+		var page = billService.getAllBillsPaged(pageNumber, pageSize, sortBy, sortDirection);
+		return ResponseEntity.ok(page.getContent());
 	}
 
 	// Get a bill by Invoice Id
@@ -71,7 +82,7 @@ public class HomeController {
 
 	// Update a bill
 	@PutMapping("/{invoice_no}")
-	public ResponseEntity<BillDto> updateBill(@Valid @RequestBody BillDto billDto,@PathVariable int invoice_no) {
+	public ResponseEntity<BillDto> updateBill(@Valid @RequestBody BillDto billDto, @PathVariable int invoice_no) {
 		BillDto updatedBill = billService.updateBill(invoice_no, billDto);
 		if (updatedBill != null) {
 			return ResponseEntity.ok(updatedBill);
