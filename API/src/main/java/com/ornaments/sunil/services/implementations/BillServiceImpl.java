@@ -2,7 +2,6 @@ package com.ornaments.sunil.services.implementations;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -19,11 +18,12 @@ import jakarta.transaction.Transactional;
 public class BillServiceImpl implements BillService {
 
     BillRepository billRepository;
-    Mapper mapper = new Mapper();
+    Mapper mapper;
 
     // Constructor Injection
-    public BillServiceImpl(BillRepository billRepository) {
+    public BillServiceImpl(BillRepository billRepository,Mapper mapper) {
         this.billRepository = billRepository;
+        this.mapper = mapper;
     }
 
     public BillDto getBillByInvoiceNo(int invoice_no) {
@@ -37,7 +37,7 @@ public class BillServiceImpl implements BillService {
     public List<BillDto> getBillByName(String name) {
         List<Bill> bill = this.billRepository.getBillByNameContaining(name);
         if (!bill.isEmpty())
-            return bill.stream().map(b -> mapper.BillEntityToDtoMapping(b)).collect(Collectors.toList());
+            return bill.stream().map(b -> mapper.BillEntityToDtoMapping(b)).toList();
         else
             throw new BillNotFoundException("Bill with name " + name + " not found");
     }
@@ -45,7 +45,7 @@ public class BillServiceImpl implements BillService {
     public List<BillDto> getAllBills() {
         List<Bill> bill = this.billRepository.findAll();
         if (!bill.isEmpty())
-            return bill.stream().map(b -> mapper.BillEntityToDtoMapping(b)).collect(Collectors.toList());
+            return bill.stream().map(b -> mapper.BillEntityToDtoMapping(b)).toList();
         else
             return Collections.emptyList();
     }

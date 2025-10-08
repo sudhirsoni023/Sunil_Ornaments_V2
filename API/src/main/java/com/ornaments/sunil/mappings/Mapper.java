@@ -1,8 +1,11 @@
 package com.ornaments.sunil.mappings;
 
+import org.springframework.stereotype.Component;
+
 import com.ornaments.sunil.dto.BillDto;
 import com.ornaments.sunil.entities.Bill;
 
+@Component
 public class Mapper {
 
     public BillDto BillEntityToDtoMapping(Bill bill) {

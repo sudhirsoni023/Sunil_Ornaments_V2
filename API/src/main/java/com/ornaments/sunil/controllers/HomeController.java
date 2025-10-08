@@ -1,7 +1,6 @@
 package com.ornaments.sunil.controllers;
 
 import java.util.List;
-import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ornaments.sunil.services.interfaces.*;
+
+import jakarta.validation.Valid;
+
 import com.ornaments.sunil.dto.*;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -69,7 +71,7 @@ public class HomeController {
 
 	// Update a bill
 	@PutMapping("/{invoice_no}")
-	public ResponseEntity<BillDto> updateBill(@Valid @PathVariable int invoice_no, @RequestBody BillDto billDto) {
+	public ResponseEntity<BillDto> updateBill(@Valid @RequestBody BillDto billDto,@PathVariable int invoice_no) {
 		BillDto updatedBill = billService.updateBill(invoice_no, billDto);
 		if (updatedBill != null) {
 			return ResponseEntity.ok(updatedBill);

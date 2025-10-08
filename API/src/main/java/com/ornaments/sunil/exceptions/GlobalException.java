@@ -24,6 +24,7 @@ public class GlobalException {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException ex) {
+                System.out.println("In Global Exception");
         Map<String, String> err = new HashMap<>();
         List<FieldError> errorList = ex.getBindingResult().getFieldErrors();
         for (FieldError error : errorList)
